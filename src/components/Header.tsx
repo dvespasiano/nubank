@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
-import styledComponents from './styledComponents';
+import styledComponents from './StyledComponents';
 import { Feather as Icon } from '@expo/vector-icons';
 
 const Header = () => {
