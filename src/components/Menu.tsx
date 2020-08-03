@@ -1,12 +1,16 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ScrollView, Text, TouchableOpacity, Animated } from 'react-native';
 import styledComponents from './StyledComponents';
 import { Feather as Icon } from '@expo/vector-icons';
 import QRCode from 'react-native-qrcode'
 
-const Menu = () => {
+const Menu = (translateY: any) => {
     return (
-        <ScrollView style={styledComponents.container}>
+        //corrigir esse opacity
+        <Animated.ScrollView style={[styledComponents.container, opacity: translateY.interpolate({
+            inputRange: [0, 150],
+            outputRange: [0, 1],
+        })]} >
             <View style={styles.code}>
                 <QRCode value="https://github.com/dvespasiano" size={80} fgColor="#fff" bgColor="#8B10AE" />
             </View>
@@ -34,14 +38,14 @@ const Menu = () => {
                 </TouchableOpacity>
 
             </View>
-        </ScrollView>
+        </Animated.ScrollView >
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        margin: '0 30px'
+        margin: '0 30px',
     },
     code: {
         background: '#fff',
